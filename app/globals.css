@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+  
+  body {
+    @apply bg-white font-sans text-gray-900;
+  }
+
+  /* Custom scroll bar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-arab-navy/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-arab-navy/40;
+  }
+}
+
+@layer components {
+  /* Legacy button styles for backward compatibility */
+  .btn-primary {
+    @apply bg-arab-navy hover:bg-arab-navy/90 text-white font-semibold py-3 px-6 rounded-lg 
+           transition-all duration-200 shadow-md hover:shadow-lg active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border-2 border-arab-navy text-arab-navy hover:bg-arab-navy 
+           hover:text-white font-semibold py-3 px-6 rounded-lg 
+           transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-soft p-6 border border-gray-100 
+           hover:shadow-lg transition-all duration-300;
+  }
+  
+  /* Form elements */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg 
+           focus:outline-none focus:ring-2 focus:ring-arab-navy/20 
+           focus:border-arab-navy transition-all duration-200
+           placeholder:text-gray-400;
+  }
+  
+  /* Chat bubbles - updated for new design */
+  .chat-bubble-user {
+    @apply bg-arab-navy text-white rounded-lg rounded-br-md p-4 max-w-xs ml-auto
+           shadow-md animate-slide-up;
+  }
+  
+  .chat-bubble-bot {
+    @apply bg-gray-100 text-gray-800 rounded-lg rounded-bl-md p-4 max-w-xs
+           shadow-sm animate-slide-up;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 lg:py-20;
+  }
+
+  /* Container */
+  .container-width {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-arab-navy to-arab-green bg-clip-text text-transparent;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}
+
+@layer utilities {
+  .animate-scale-up {
+    @apply transition-transform duration-200 hover:scale-105 active:scale-95;
+  }
+
+  /* Text shadow utilities */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Animation delays */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+} 

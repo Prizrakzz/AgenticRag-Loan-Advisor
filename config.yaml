@@ -1,0 +1,86 @@
+# Loan Approval System Configuration
+
+# Database Settings
+database:
+  url: "sqlite:///C:/Users/User/Desktop/Agentic Rag/data/app_new.db"
+  echo: false
+  pool_size: 5
+  max_overflow: 10
+
+# Vector Store Settings
+vector:
+  host: "localhost"
+  port: 6333
+  collection_name: "policy_chunks"
+  embedding_size: 1536  # text-embedding-3-small
+
+# OpenAI Settings
+llm:
+  chat_model: "gpt-4o-mini"
+  chat_fallback_model: "gpt-4o"
+  embedding_model: "text-embedding-3-small"
+  max_tokens: 300
+  temperature: 0.1
+  timeout: 30
+
+# Risk & Decision Thresholds
+risk:
+  hard_decline_threshold: 0.8
+  approve_threshold: 0.65
+  counter_threshold: 0.5
+  market_weights:
+    cbj_weight: 0.5
+    cpi_weight: 0.3
+    re_weight: 0.2
+  weights:
+    client: 0.6
+    market: 0.3
+    bank: 0.1
+
+# Bank Health & Scoring
+bank:
+  health_constant: 0.82
+
+# Market Data Scraping
+scrape:
+  schedule_cron: "0 8,14 * * *"  # 8 AM and 2 PM daily
+  timeout: 30
+  retry_count: 3
+  stale_threshold_hours: 48
+
+# Authentication
+auth:
+  # secret_key is loaded from JWT_SECRET env var — do NOT hardcode here
+  algorithm: "HS256"
+  access_token_expire_minutes: 1440  # 24 hours
+
+# Rate Limiting
+rate_limit:
+  requests_per_minute: 30
+  burst_size: 10
+
+# API Settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+  workers: 1
+
+# Logging
+logging:
+  level: "INFO"
+  format: "json"
+  enable_audit: true
+
+# Performance
+performance:
+  target_p95_ms: 1000
+  websocket_timeout: 300
+
+# Data Sources
+data:
+  customer_file: "data/Clientbase_scored.csv"
+  policy_pdf: "data/cpcdc-commercial-lending-program-loan-policy.pdf"
+  policy_chunks: "data/policy_chunks.jsonl"
+  market_cache: "data/market_cache.sqlite"
+  data_dictionary: "docs/data_dictionary.json" 

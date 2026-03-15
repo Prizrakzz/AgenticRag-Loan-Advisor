@@ -1,0 +1,97 @@
+{
+  "client_id": {
+    "type": "int",
+    "role": "id",
+    "desc": "Internal row ID; never a model feature"
+  },
+  "annual_income": {
+    "type": "int",
+    "role": "raw",
+    "desc": "Annual income in $K"
+  },
+  "ccavg_income_ratio": {
+    "type": "float",
+    "role": "engineered",
+    "desc": "ccavg_spend / annual_income"
+  },
+  "ccavg_spend": {
+    "type": "float",
+    "role": "raw",
+    "desc": "Avg monthly credit card spend in $K"
+  },
+  "credit_card_with_bank": {
+    "type": "int",
+    "role": "raw_binary",
+    "desc": "1 if customer has a bank-issued credit card"
+  },
+  "digital_user": {
+    "type": "int",
+    "role": "engineered_binary",
+    "desc": "online_banking OR credit_card_with_bank"
+  },
+  "dti_z": {
+    "type": "float",
+    "role": "engineered_z",
+    "desc": "z-score of mortgage_balance / annual_income"
+  },
+  "education_level": {
+    "type": "int{1,2,3}",
+    "role": "raw_cat",
+    "desc": "1=Undergrad, 2=Graduate, 3=Advanced/Professional"
+  },
+  "exp_age_gap": {
+    "type": "int",
+    "role": "engineered",
+    "desc": "max(age - experience_years, 0)"
+  },
+  "experience_years": {
+    "type": "int",
+    "role": "raw",
+    "desc": "Years of professional experience"
+  },
+  "family_size": {
+    "type": "int",
+    "role": "raw",
+    "desc": "Household members"
+  },
+  "has_invest_acct": {
+    "type": "int",
+    "role": "engineered_binary",
+    "desc": "securities_acct OR cd_account"
+  },
+  "has_personal_loan": {
+    "type": "int",
+    "role": "label",
+    "desc": "1 = took/approved for personal loan (current proxy label)"
+  },
+  "income_per_person_z": {
+    "type": "float",
+    "role": "engineered_z",
+    "desc": "z-scored income per family member"
+  },
+  "mortgage_balance_z": {
+    "type": "float",
+    "role": "engineered_z",
+    "desc": "z-scored mortgage balance"
+  },
+  "online_banking": {
+    "type": "int",
+    "role": "raw_binary",
+    "desc": "Uses online banking"
+  },
+  "securities_acct": {
+    "type": "int",
+    "role": "raw_binary",
+    "desc": "Has securities/investment account"
+  },
+  "risk_score": {
+    "type": "float[0,1]",
+    "role": "model_output",
+    "desc": "1 - p(approved); higher = riskier"
+  },
+  "risk_grade": {
+    "type": "str{A,B,C,D}",
+    "role": "binned_output",
+    "desc": "Quartiles of risk_score (A safest, D riskiest)"
+  }
+} 
