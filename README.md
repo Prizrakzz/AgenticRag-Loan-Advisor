@@ -461,10 +461,6 @@ pytest tests/test_guardrails.py -v
 
 ---
 
-## License
-
-This project is proprietary to Arab Bank. All rights reserved.
-
 ## 🔧 Available Scripts
 
 - `npm run dev` - Start development server
